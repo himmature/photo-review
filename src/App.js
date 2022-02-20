@@ -1,27 +1,25 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./App.css";
 import { Card } from "./components/UI/Card/Card";
 import { Section } from "./components/UI/Section/Section";
+import { SectionWithoutBorder } from "./components/UI/SectionWithoutBorder/SectionWithoutBorder";
 import { ApprovedImages } from "./components/ApprovedImages/ApprovedImages";
-
-const URL = "";
+import { CurrentImage } from "./components/CurrentImage/CurrentImage";
 
 function App() {
-  useEffect(() => {
-    fetch();
-  }, []);
+
   return (
     <div className="App">
       <Card>
         <Section>
-          <h4>IMAGE APPROVAL APPLICATION</h4>
+          <h4 className='heading'>IMAGE APPROVAL APPLICATION</h4>
         </Section>
-        <Section>
+        <SectionWithoutBorder>
           <ApprovedImages />
-        </Section>
-        <Section>
-          <Card>current image</Card>
-        </Section>
+        </SectionWithoutBorder>
+        <SectionWithoutBorder>
+          <CurrentImage />
+        </SectionWithoutBorder>
       </Card>
     </div>
   );
