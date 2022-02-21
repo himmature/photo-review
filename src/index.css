@@ -8,10 +8,10 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  background-color: aqua;
-}
+    background-color: #3b55e6;
+  }
 
 .heading {
-  color: #2b69ce;
+  color: #3b55e6;
   font-weight: 600;
 }

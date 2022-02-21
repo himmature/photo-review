@@ -1,6 +1,6 @@
 import React from "react";
 import { Section } from "../UI/Section/Section";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   ImageContainer,
   ImageStyled,
@@ -9,82 +9,19 @@ import {
 } from "./ApprovedImages.styles";
 import { HorizontalScroller } from "../UI/HorizontalScroller/HorizontalScroller";
 import { AiOutlineCheck, AiOutlinePlusCircle } from "react-icons/ai";
-
-const imagesList = [
-  {
-    id: new Date(),
-    url: "https://picsum.photos/50",
-    alt: "random image",
-  },
-  {
-    id: new Date(),
-    url: "https://picsum.photos/50",
-    alt: "random image",
-  },
-  {
-    id: new Date(),
-    url: "https://picsum.photos/50",
-    alt: "random image",
-  },
-  // {
-  //   id: new Date(),
-  //   url: "https://picsum.photos/50",
-  //   alt: "random image",
-  // },
-  // {
-  //   id: new Date(),
-  //   url: "https://picsum.photos/50",
-  //   alt: "random image",
-  // },
-  // {
-  //   id: new Date(),
-  //   url: "https://picsum.photos/50",
-  //   alt: "random image",
-  // },
-  // {
-  //   id: new Date(),
-  //   url: "https://picsum.photos/50",
-  //   alt: "random image",
-  // },
-  // {
-  //   id: new Date(),
-  //   url: "https://picsum.photos/50",
-  //   alt: "random image",
-  // },
-  // {
-  //   id: new Date(),
-  //   url: "https://picsum.photos/50",
-  //   alt: "random image",
-  // },
-  // {
-  //   id: new Date(),
-  //   url: "https://picsum.photos/50",
-  //   alt: "random image",
-  // },
-  // {
-  //   id: new Date(),
-  //   url: "https://picsum.photos/50",
-  //   alt: "random image",
-  // },
-  // {
-  //   id: new Date(),
-  //   url: "https://picsum.photos/50",
-  //   alt: "random image",
-  // },
-  // {
-  //   id: new Date(),
-  //   url: "https://picsum.photos/50",
-  //   alt: "random image",
-  // },
-  // {
-  //   id: new Date(),
-  //   url: "https://picsum.photos/50",
-  //   alt: "random image",
-  // },
-];
+import { ACTIONS } from '../../store/Actions';
 
 export const ApprovedImages = (props) => {
   const approvedImages = useSelector((state) => state.approvedImages);
+  const dispatch = useDispatch();
+
+  const selectApprovedImageHandler = (id) => {
+    const image = approvedImages.find(item => item.id === id);
+    dispatch({
+      type: ACTIONS.CURRENT,
+      payload: image
+    });
+  }
   return (
     <>
       <h4 className="heading">
@@ -94,7 +31,7 @@ export const ApprovedImages = (props) => {
         {approvedImages?.length ? (
           <HorizontalScroller>
             {approvedImages?.map((item) => (
-              <ImageContainer key={item.id}>
+              <ImageContainer key={item.id} onClick={() => selectApprovedImageHandler(item.id)}>
                 <ImageStyled key={item.id} src={item.url} alt={item.alt} />
                 <ApprovedImageIconStyled>
                   <AiOutlineCheck />

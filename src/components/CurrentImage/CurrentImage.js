@@ -15,17 +15,14 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 const CLIENT_ID = "qhS7QODXruNu2zwrFaQKWA4b2EmfitQDpGxfTxz-bYA";
 const URL = `https://api.unsplash.com/photos/random?client_id=${CLIENT_ID}`;
 
-const paraText = "Click on the + in order to get image recommendations";
-
 export const CurrentImage = (props) => {
-  const disptach = useDispatch();
+  const dispatch = useDispatch();
   const currentImage = useSelector((state) => state.currentImage);
   const approvedImages = useSelector((state) => state.approvedImages);
 
   const plusButtonClickHandler = async () => {
     const response = await fetch(URL);
     const data = await response.json();
-    console.log(data);
     const isDuplicate = approvedImages.find((item) => item.id === data.id);
     if (isDuplicate) {
       plusButtonClickHandler();
@@ -35,7 +32,7 @@ export const CurrentImage = (props) => {
         url: data.urls.regular,
         alt: data.description,
       };
-      disptach({
+      dispatch({
         type: ACTIONS.CURRENT,
         payload: image,
       });
@@ -43,7 +40,7 @@ export const CurrentImage = (props) => {
   };
 
   const approveImageHandler = () => {
-    disptach({
+    dispatch({
       type: ACTIONS.APPROVE,
       payload: currentImage,
     });
@@ -69,7 +66,9 @@ export const CurrentImage = (props) => {
             approveImageHandler={approveImageHandler}
           />
         ) : (
-          <ParaTextStyled>{paraText}</ParaTextStyled>
+          <ParaTextStyled>
+            Click on the <span><AiOutlinePlusCircle style={{margin: '-2px'}} /></span> in order to get image recommendations
+          </ParaTextStyled>
         )}
       </SectionWithoutBorder>
     </>
