@@ -40,10 +40,14 @@ export const CurrentImage = (props) => {
   };
 
   const approveImageHandler = () => {
-    dispatch({
-      type: ACTIONS.APPROVE,
-      payload: currentImage,
-    });
+    const isDuplicate = approvedImages.find(
+      (item) => item.id === currentImage.id
+    );
+    !isDuplicate &&
+      dispatch({
+        type: ACTIONS.APPROVE,
+        payload: currentImage,
+      });
     plusButtonClickHandler();
   };
   return (
@@ -67,7 +71,11 @@ export const CurrentImage = (props) => {
           />
         ) : (
           <ParaTextStyled>
-            Click on the <span><AiOutlinePlusCircle style={{margin: '-2px'}} /></span> in order to get image recommendations
+            Click on the{" "}
+            <span>
+              <AiOutlinePlusCircle style={{ margin: "-2px" }} />
+            </span>{" "}
+            in order to get image recommendations
           </ParaTextStyled>
         )}
       </SectionWithoutBorder>

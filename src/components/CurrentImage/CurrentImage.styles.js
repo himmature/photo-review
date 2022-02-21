@@ -5,6 +5,9 @@ export const ImageDivStyled = styled.div`
   height: 525px;
   box-shadow: 0 0 8px #cecece;
   border-radius: 8px;
+  @media screen and (max-height: 695px) {
+    height: 50vh;
+  }
 `;
 export const ImageStyled = styled.img`
   border-radius: 8px;
