@@ -23,7 +23,6 @@ export const CurrentImage = (props) => {
 
   const plusButtonClickHandler = async () => {
     const response = await fetch(URL);
-    console.log('response', response)
     const data = await response.json();
     const isDuplicate = approvedImages.find((item) => item.id === data.id);
     if (isDuplicate) {
@@ -56,14 +55,17 @@ export const CurrentImage = (props) => {
     <>
       <Section>
         <ImageDivStyled>
-          {
-            console.log('currentImage', currentImage)
-          }
           {currentImage.url ? (
-            // <ImageStyled data-testid='current-image' src={currentImage.url} alt={currentImage.alt} />
-            <h1>test heading</h1>
+            <ImageStyled
+              data-testid="current-image"
+              src={currentImage.url}
+              alt={currentImage.alt}
+            />
           ) : (
-            <PlusButtonStyled data-testid='plus' onClick={plusButtonClickHandler}>
+            <PlusButtonStyled
+              data-testid="plus"
+              onClick={plusButtonClickHandler}
+            >
               <AiOutlinePlusCircle />
             </PlusButtonStyled>
           )}
