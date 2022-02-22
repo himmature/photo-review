@@ -8,11 +8,15 @@ import { CurrentImage } from "./components/CurrentImage/CurrentImage";
 
 function App() {
 
+  const resetHandler = () => {
+    localStorage.removeItem('persist:photo-store');
+  } 
+
   return (
     <div className="App">
       <Card>
         <Section>
-          <h4 className='heading'>IMAGE APPROVAL APPLICATION</h4>
+          <h4 className='heading'>IMAGE APPROVAL APPLICATION <span style={{float: 'right', cursor: 'pointer'}} onClick={resetHandler}>Reset</span></h4>
         </Section>
         <SectionWithoutBorder>
           <ApprovedImages />
