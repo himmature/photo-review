@@ -7,11 +7,13 @@ export const ImageContainer = styled.div`
   min-width: 80px;
   height: 100%;
   box-shadow: 0 0 8px #cecece;
+  border-radius: 8px;
 `;
 
 export const ImageStyled = styled.img`
   width: 100%;
   height: 100%;
+  border-radius: 8px;
 `;
 
 export const ApprovedImageIconStyled = styled.div`

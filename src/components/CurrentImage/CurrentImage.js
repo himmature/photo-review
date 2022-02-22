@@ -55,7 +55,7 @@ export const CurrentImage = (props) => {
     <>
       <Section>
         <ImageDivStyled>
-          {currentImage.url ? (
+          {currentImage?.url ? (
             <ImageStyled
               data-testid="current-image"
               src={currentImage.url}
@@ -72,7 +72,7 @@ export const CurrentImage = (props) => {
         </ImageDivStyled>
       </Section>
       <SectionWithoutBorder>
-        {currentImage.url ? (
+        {currentImage?.url ? (
           <ImageControls
             plusButtonClickHandler={plusButtonClickHandler}
             approveImageHandler={approveImageHandler}

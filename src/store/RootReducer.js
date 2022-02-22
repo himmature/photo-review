@@ -1,4 +1,5 @@
 import { ACTIONS } from "./Actions";
+import { RootState } from "./RootState";
 
 export const RootReducer = (state, action) => {
   switch (action.type) {
@@ -12,6 +13,8 @@ export const RootReducer = (state, action) => {
         ...state,
         approvedImages: [...state.approvedImages, action.payload],
       };
+    case ACTIONS.RESET:
+      return RootState;
     default:
       return state;
   }
