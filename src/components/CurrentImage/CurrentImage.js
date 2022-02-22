@@ -14,6 +14,7 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 
 const CLIENT_ID = "qhS7QODXruNu2zwrFaQKWA4b2EmfitQDpGxfTxz-bYA";
 const URL = `https://api.unsplash.com/photos/random?client_id=${CLIENT_ID}`;
+// const URL = `https://jsonplaceholder.typicode.com/todos/1`;
 
 export const CurrentImage = (props) => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ export const CurrentImage = (props) => {
 
   const plusButtonClickHandler = async () => {
     const response = await fetch(URL);
+    console.log('response', response)
     const data = await response.json();
     const isDuplicate = approvedImages.find((item) => item.id === data.id);
     if (isDuplicate) {
@@ -54,10 +56,14 @@ export const CurrentImage = (props) => {
     <>
       <Section>
         <ImageDivStyled>
+          {
+            console.log('currentImage', currentImage)
+          }
           {currentImage.url ? (
-            <ImageStyled src={currentImage.url} alt={currentImage.alt} />
+            // <ImageStyled data-testid='current-image' src={currentImage.url} alt={currentImage.alt} />
+            <h1>test heading</h1>
           ) : (
-            <PlusButtonStyled onClick={plusButtonClickHandler}>
+            <PlusButtonStyled data-testid='plus' onClick={plusButtonClickHandler}>
               <AiOutlinePlusCircle />
             </PlusButtonStyled>
           )}

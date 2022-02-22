@@ -6,10 +6,10 @@ export const ImageControls = (props) => {
   const { plusButtonClickHandler, approveImageHandler } = props;
   return (
     <ControlsDivStyled>
-      <ControlButtonStyled onClick={plusButtonClickHandler}>
+      <ControlButtonStyled data-testid='reject' onClick={plusButtonClickHandler}>
         <AiOutlineClose />
       </ControlButtonStyled>
-      <ControlButtonStyled primary onClick={approveImageHandler}>
+      <ControlButtonStyled data-testid='approve' primary onClick={approveImageHandler}>
         <AiOutlineCheck />
       </ControlButtonStyled>
     </ControlsDivStyled>
